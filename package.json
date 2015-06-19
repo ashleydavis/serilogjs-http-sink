@@ -1,0 +1,19 @@
+{
+  "name": "serilogjs-http-sink",
+  "version": "1.0.0",
+  "description": "A serilogjs plugin that writes logs to HTTP.",
+  "main": "serilog-http-sink.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashleydavis/serilogjs-http-sink.git"
+  },
+  "author": "ashley@codecapers.com.au",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashleydavis/serilogjs-http-sink/issues"
+  },
+  "homepage": "https://github.com/ashleydavis/serilogjs-http-sink#readme"
+}
