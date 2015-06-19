@@ -73,7 +73,7 @@
                         Properties: properties,
                     },
                 ],
-            }
+            };
 
             var requestOptions = {
                 url: options.url,
