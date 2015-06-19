@@ -38,9 +38,6 @@
         options = options || {};
 
         self.emit = function(evt) {
-            console.log('http-emit:');
-            console.log(evt);
-
             var renderedMsg = evt.messageTemplate.render(evt.properties);
 
             // Convert to properties format expected by log server.
