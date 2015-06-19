@@ -1,5 +1,5 @@
 {
-  "name": "serilogjs-http-sink",
+  "name": "serilog-http-sink",
   "version": "1.0.0",
   "description": "A serilogjs plugin that writes logs to HTTP.",
   "main": "serilog-http-sink.js",
