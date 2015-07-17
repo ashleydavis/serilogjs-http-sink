@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashleydavis/serilogjs-http-sink.git"
+    "url": "git+https://github.com/codecapers/serilogjs-http-sink.git"
   },
   "author": "ashley@codecapers.com.au",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ashleydavis/serilogjs-http-sink/issues"
+    "url": "https://github.com/codecapers/serilogjs-http-sink/issues"
   },
-  "homepage": "https://github.com/ashleydavis/serilogjs-http-sink#readme",
+  "homepage": "https://github.com/codecapers/serilogjs-http-sink#readme",
   "dependencies": {
     "linq": "^3.0.4-beta",
     "request": "^2.58.0"
