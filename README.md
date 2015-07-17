@@ -1,4 +1,4 @@
 # serilogjs-http-sink
-A serilogjs plugin that writes logs to HTTP (post method).
+A SerilogJS sink that outputs logs via HTTP POST.
 
 Designed to work with Real Serious Games [Log Server](https://github.com/Real-Serious-Games/LogServer)
