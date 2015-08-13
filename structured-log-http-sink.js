@@ -1,6 +1,6 @@
 'use strict';
 
-// Copyright 2014 Serilog Contributors
+// Copyright 2014 Structured-Log Contributors
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -23,11 +23,21 @@
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
-        root.serilog.sink.http = factory();
+        root.structuredLog.sink.http = factory();
     }
 }(this, function() {
 
     var HttpSink = function (options) {
+
+        // Argument checking.
+        if (!options) {
+            throw new Error("'options' parameter is required.");
+        }
+
+        if (!options.url) {
+            throw new Error("'options.url' parameter is required.");
+        }
+
         var self = this;
 
         var request = require('request');
@@ -35,41 +45,43 @@
 
         self.toString = function() { return 'HttpSink'; };
 
-        options = options || {};
+        self.emit = function(evts) {
 
-        self.emit = function(evt) {
-            var renderedMsg = evt.messageTemplate.render(evt.properties);
+            var processedEvents = evts
+                .map(function (evt) {
 
-            // Convert to properties format expected by log server.
-            var properties = 
-                E.from(Object.keys(evt.properties))
-                    .select(function (propertyName) {
-                        return { 
-                            propertyName: propertyName,
-                            propertyValue: evt.properties[propertyName],
-                        };
-                    })
-                    .toObject(
-                        function (property) {
-                            return property.propertyName;
-                        },
-                        function (property) {
-                            return {
-                                Value: property.propertyValue,
+                    var renderedMsg = evt.messageTemplate.render(evt.properties);
+
+                    // Convert to properties format expected by log server.
+                    var properties = E.from(Object.keys(evt.properties))
+                        .select(function (propertyName) {
+                            return { 
+                                propertyName: propertyName,
+                                propertyValue: evt.properties[propertyName],
                             };
-                        }
-                    );
+                        })
+                        .toObject(
+                            function (property) {
+                                return property.propertyName;
+                            },
+                            function (property) {
+                                return {
+                                    Value: property.propertyValue,
+                                };
+                            }
+                        );
 
-            var body = {
-                Logs: [
-                    {
+                    return {
                         Timestamp: evt.timestamp,
                         Level: evt.level,
                         MessageTemplate: evt.messageTemplate.raw,
                         RenderedMessage: renderedMsg,
                         Properties: properties,
-                    },
-                ],
+                    };
+                });
+
+            var body = {
+                Logs: processedEvents,
             };
 
             var requestOptions = {
