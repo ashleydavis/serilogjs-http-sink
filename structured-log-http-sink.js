@@ -94,11 +94,12 @@
                 if (err) {
                     console.error('Error posting log message');
                     console.error(err);
-                    return;
                 }
-
-                console.log('Posted log message');
-                console.log(response.statusCode);
+                else {
+                    console.log('Posted log message');
+                    console.log(response.statusCode);
+                }
+                done(err);
             });
 
         };
