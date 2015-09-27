@@ -12,3 +12,9 @@ log.info('Hello this is some information.');
 log.warn('This is a warning.');
 
 log.error('This is an error.');
+
+log.flush(function () {
+	console.log('Flushed!');
+});
+
+console.log('Finished');
