@@ -45,7 +45,7 @@
 
         self.toString = function() { return 'HttpSink'; };
 
-        self.emit = function(evts) {
+        self.emit = function(evts, done) {
 
             var processedEvents = evts
                 .map(function (evt) {

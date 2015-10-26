@@ -1,6 +1,6 @@
 {
   "name": "structured-log-http-sink",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A NodeJS structured-log sink that outputs logs via HTTP POST.",
   "main": "structured-log-http-sink.js",
   "scripts": {
